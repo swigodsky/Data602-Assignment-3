@@ -7,5 +7,5 @@ numpy
 matplotlib
 pymongo
 prettytable
-statsmodel
+statsmodels
 sklearn
