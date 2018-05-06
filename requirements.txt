@@ -1,0 +1,11 @@
+bs4
+requests
+urllib3
+datetime
+pandas
+numpy
+matplotlib
+pymongo
+prettytable
+statsmodel.tsa.arima_model
+sklearn.svm
