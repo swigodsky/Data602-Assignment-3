@@ -11,9 +11,10 @@ import datetime            #to determine the current date and time
 from dateutil import parser
 import pandas as pd
 import numpy as np
-#np.warnings.filterwarnings("ignore")
+np.warnings.filterwarnings("ignore")
+import matplotlib
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt 
-plt.get_backend()
 from pymongo import MongoClient
 from prettytable import PrettyTable
 from statsmodels.tsa.arima_model import ARMA
