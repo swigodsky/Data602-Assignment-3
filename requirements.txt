@@ -7,5 +7,5 @@ numpy
 matplotlib
 pymongo
 prettytable
-statsmodel.tsa.arima_model
-sklearn.svm
+statsmodel
+sklearn
