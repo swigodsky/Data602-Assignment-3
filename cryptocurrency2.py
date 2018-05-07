@@ -181,7 +181,7 @@ def buy(row_num, crypto_df, cash, blotter2):
      price = price_scrape(symbol,'Ask',name)
           
      timenow = datetime.datetime.now()
-     timenow = timenow.strftime('%m-%d-%Y %H:%M:%S')
+     timenowstr = timenow.strftime('%m-%d-%Y %H:%M:%S')
      
      print('The price of 1 ' + name + ' is $' + str(price) + '\n')
      
@@ -211,6 +211,7 @@ def buy(row_num, crypto_df, cash, blotter2):
              "Quantity": shares_buy, 
              "Executed Price": price, 
              "Timestamp": timenow, 
+             "Timestring": timenowstr,
              "Money In/Out":dollars,
              "Position": position,
              "WAP": wap,
@@ -234,7 +235,7 @@ def sell(row_num, crypto_df, cash, blotter2):
 
      price = price_scrape(symbol,'Bid',name)          
      timenow = datetime.datetime.now()
-     timenow = timenow.strftime('%m-%d-%Y %H:%M:%S')
+     timenowstr = timenow.strftime('%m-%d-%Y %H:%M:%S')
      
      print('The price of 1 ' + name + ' is $' + str(price) + '\n')
  
@@ -265,7 +266,8 @@ def sell(row_num, crypto_df, cash, blotter2):
                  "Ticker": symbol, 
                  "Quantity": share_sell, 
                  "Executed Price": price, 
-                 "Timestamp": timenow, 
+                 "Timestamp": timenow,
+                 "Timestring": timenowstr,
                  "Money In/Out":dollars,
                  "Position": position,
                  "RPL": rpl,
@@ -444,7 +446,7 @@ def profit_loss(blotter2, crypto_df, prediction,totalpl):
     cash_df = pd.DataFrame()
     for item in blotter2.find():
         cash_df = cash_df.append({'cash':item['cash'],
-                                  'time':item['Timestamp']}, ignore_index=True)
+                                  'time':item['Timestring']}, ignore_index=True)
     
     input('Press enter to view a graph of cash on hand. \n')
     plt.scatter(x=cash_df['time'],y=cash_df['cash'], s= 7)
@@ -484,7 +486,7 @@ def profit_loss(blotter2, crypto_df, prediction,totalpl):
     for value in blotter2.find({'Ticker':tickerval}):
         wap_df = wap_df.append({'wap':value['WAP'],
                             'exec_price':value['Executed Price'],    
-                            'time':value['Timestamp']}, ignore_index=True)
+                            'time':value['Timestring']}, ignore_index=True)
    
     input('Press enter to view a graph of Weighted Average Price. \n')
     plt.scatter(x=wap_df['time'],y=wap_df['wap'], s= 7)
